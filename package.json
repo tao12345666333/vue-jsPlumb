@@ -1,7 +1,7 @@
 {
-  "name": "maid-system",
-  "version": "1.0.0",
-  "description": "One maid system.",
+  "name": "vue-jsPlumb",
+  "version": "0.0.1",
+  "description": "jsPlumb with vue",
   "author": "TaoBeier <zhangjintao9020@gmail.com>",
   "private": true,
   "scripts": {
