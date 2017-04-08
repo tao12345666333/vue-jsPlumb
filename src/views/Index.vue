@@ -1,11 +1,8 @@
 <template>
-  <div>
-    Index page
-    <div class="panel-body points demo flow_chart" id="points">
-      <div id="test1"></div>
-      <div id="test2"></div>
-      <div id="test3"></div>
-    </div>
+  <div class="panel-body points demo flow_chart" id="points">
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
   </div>
 </template>
 
@@ -15,10 +12,6 @@ import { jsPlumb } from 'jsplumb';
 
 require('../assets/css/demo.css');
 require('../assets/css/jsplumb.css');
-
-window.$ = $;
-window.jQuery = $;
-window.jsPlumb = jsPlumb;
 
 export default {
   name: 'Index',
