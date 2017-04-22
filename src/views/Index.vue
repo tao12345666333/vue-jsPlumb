@@ -95,6 +95,7 @@ export default {
         // use three-arg spec to create two different arrows with the common values:
         const overlays = [
           ['Arrow', { location: 0.7 }, arrowCommon],
+          ['Label', { label: 'label', id: 'label' }],
         ];
         // init point
         for (const point of flowData.point) {
