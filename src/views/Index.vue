@@ -1,8 +1,5 @@
 <template>
   <div class="panel-body points demo flow_chart" id="points">
-    <div id="test1"></div>
-    <div id="test2"></div>
-    <div id="test3"></div>
   </div>
 </template>
 
@@ -22,18 +19,22 @@ export default {
           {
             _id: '58c21d713819d56d68763918',
             name: 'MoeLove',
+            status: '0',
           },
           {
             _id: '58c21d803819d56d68763919',
             name: 'Moe',
+            status: '1',
           },
           {
             _id: '58c21da83819d56d6876391a',
             name: 'Love',
+            status: '0',
           },
           {
             _id: '58c63ecf3819d5a22f2c7f24',
             name: 'TaoBeier',
+            status: '1',
           },
         ],
         location: [
@@ -78,12 +79,6 @@ export default {
               fill: 'lightgray',
             },
           }],
-          // set label
-          // ['Lable', {
-          //   label: 'FOO',
-          //   id: 'label',
-          //   cssClass: 'aLabel',
-          // }],
         ],
         Container: 'points',
       });
@@ -95,7 +90,7 @@ export default {
         // use three-arg spec to create two different arrows with the common values:
         const overlays = [
           ['Arrow', { location: 0.7 }, arrowCommon],
-          ['Label', { label: 'label', id: 'label' }],
+          ['Label', { label: 'custom label', id: 'label' }],
         ];
         // init point
         for (const point of flowData.point) {
@@ -108,12 +103,20 @@ export default {
             anchor: 'Bottom',
             maxConnections: -1,
             // connectorStyle: { stroke: 'green' },
+          }, {
+            isSource: true,
+            isTarget: true,
+            dragAllowedWhenFull: true,
           });
           instance.addEndpoint(point._id, {
             uuid: `${point._id}-top`,
             anchor: 'Top',
             maxConnections: -1,
             // connectorStyle: { stroke: 'gray' },
+          }, {
+            isSource: true,
+            isTarget: true,
+            dragAllowedWhenFull: true,
           });
         }
 
@@ -121,19 +124,15 @@ export default {
         for (const i of flowData.line) {
           const uuid = [`${i[0]}-bottom`, `${i[1]}-top`];
           instance.connect({
-            // source: `${i[0]}-bottom`,
-            // target: `${i[1]}-top`,
-            // type: 'Arrow',
             uuids: uuid,
-            // paintStyle: { lineWidth: 5, stroke: 'red' },
             overlays,
           });
         }
 
         // init location
         for (const i of flowData.location) {
-          $(`.${i[0]}`).css('left', i[1] * 10);
-          $(`.${i[0]}`).css('top', i[2] * 10);
+          $(`.${i[0]}`).css('left', i[1] * 20);
+          $(`.${i[0]}`).css('top', i[2] * 20);
         }
 
         for (const point of flowData.point) {
@@ -146,12 +145,6 @@ export default {
   },
   created() {
     jsPlumb.ready(() => {
-      for (const point of this.data.point) {
-        $('.points').append(
-          `<div id="${point._id}" class="point chart_act_${point.status} ${point.name}">${point.name}</div>`,
-        );
-      }
-
       this.createFlow(this.data);
     });
   },
@@ -159,4 +152,10 @@ export default {
 </script>
 
 <style>
+.point.chart_act_0 {
+  color: #9cc;
+}
+.point.chart_act_1 {
+  color: #fac;
+}
 </style>
