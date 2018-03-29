@@ -18,7 +18,7 @@ export default {
         point: [
           {
             _id: '58c21d713819d56d68763918',
-            name: 'MoeLove',
+            name: 'MoeLove-Other',
             status: '0',
           },
           {
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     createFlow(flowData) {
-      console.log('Index created');
+      console.log('Other created');
       const color = '#acd';
       const instance = jsPlumb.getInstance({
         // notice the 'curviness' argument to this Bezier curve.
